@@ -14,7 +14,7 @@ Both produce the same report. No network calls, no writes — read-only.
 
 ## Platform fixes (Windows)
 
-Upstream package was macOS-only. Fork includes:
+Original was macOS-only. This version adds:
 - Windows detection via `process.platform === "win32"`
 - PATHEXT-aware executable search (`letta.cmd`, `letta.exe`, `letta.ps1`)
 - Desktop package path via `%LOCALAPPDATA%\Programs\letta-code\`
