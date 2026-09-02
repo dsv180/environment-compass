@@ -3,8 +3,8 @@ A mod for Letta Code that gives the agent an understanding of the environment it
 
 [Russian version](README.md)
 
-## What's changed vs upstream
-This fork adapts the original `environment-compass` mod for robust dual use in **local backend** (specifically optimized for Windows environments) and **cloud** agent modes.
+## Changes from the original
+This version adapts the original community `environment-compass` mod for robust dual use in **local backend** (specifically optimized for Windows environments) and **cloud** agent modes.
 ### Key Improvements
 #### 1. Universal Memory Directory Resolution (`resolveMemoryDir`)
 The original mod only checked the cloud agent path, causing it to fail for local backend agents. This fork resolves this by dynamically checking both paths:
