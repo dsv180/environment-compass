@@ -1,5 +1,6 @@
 # @letta-ai/environment-compass (Windows & Cloud Adaptation)
 A mod for Letta Code that gives the agent an understanding of the environment it runs in. The mod is passive: it does not modify the system, but only reads its state and provides this data to the agent for decision-making.
+
 [Russian version](README.md)
 
 ## What's changed vs upstream
