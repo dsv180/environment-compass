@@ -1,29 +1,56 @@
-# @letta-ai/environment-compass
+# Environment Compass
 
-Letta Code mod package.
+Letta Code mod — read-only ориентация агента в среде выполнения.
 
-## Install locally
+## Что делает
+
+Показывает, в каком окружении запущен агент: Desktop (macOS / Windows), платформа, модель, пути и git-статус памяти и рабочей директории.
+
+- среда, модель, режим permission
+- HOME, CWD, MEMORY_DIR, переменные окружения
+- версия Node.js и Letta (Desktop bundled)
+- git-статус репозитория памяти и текущей директории
+- рекомендации перед редактированием памяти
+
+Никаких сетевых запросов, никакой записи на диск.
+
+## Установка
 
 ```bash
+git clone https://github.com/dsv180/environment-compass.git
+cd environment-compass
 letta install .
 ```
 
-Run /reload in active sessions for changes to take effect.
+После установки — `/reload` в активной сессии.
 
-## What's changed vs upstream
+## Использование
 
-Fork adapted for local Windows Desktop + cloud dual use.
+- `/env-compass` — команда в чате
+- `environment_compass` — инструмент для агента
 
-### Platform fixes (Windows, cross-platform)
-- Windows detection via `process.platform === "win32"`
-- PATHEXT-aware executable search (`letta.cmd`, `letta.exe`, `letta.ps1`)
-- Desktop package path via `%LOCALAPPDATA%\Programs\letta-code\`
-- Proper executable check (extension + F_OK, not X_OK)
+## Пример
 
-### resolveMemoryDir fix (local + cloud)
-`resolveMemoryDir()` now checks both paths by agentId:
+```
+Detected environment: Desktop / local Windows
+Agent: Вася китаец
+Model: openai-compatible/deepseek-v4-flash
 
-1. `~/.letta/lc-local-backend/memfs/<agentId>/memory` — **local backend**
-2. `~/.letta/agents/<agentId>/memory` — **cloud agent**
+Memory: ~/.letta/lc-local-backend/memfs/... (ctx.agent.id)
+Branch: main
+Status: clean
 
-Previously only checked the cloud path, so the mod couldn't find memory for local-backend agents. Now works in both modes for the same agent.
+➡ Репозиторий памяти чистый, можно редактировать.
+```
+
+## Происхождение
+
+Адаптировано из macOS-версии, найденной на рабочем ПК. Если вы автор или знаете автора оригинальной версии — напишите, пожалуйста, в issues, чтобы добавить указание авторства.
+
+## Совместимость
+
+Desktop macOS, Desktop Windows, облачный режим.
+
+## Лицензия
+
+MIT
