@@ -250,13 +250,14 @@ function collectExecutableCandidates(name) {
   const candidates = new Set();
   if (IS_WIN) {
     const pathext = (process.env.PATHEXT || ".exe;.cmd;.bat;.ps1").toLowerCase().split(";");
-    // Include base name (sans extension) and all PATHEXT variants
     const baseName = path.basename(name, path.extname(name));
     for (const ext of pathext) {
       candidates.add(baseName + ext);
     }
-    // Also include the argument as-is (it might already have an extension)
-    candidates.add(name);
+    // If the original name already has an extension, also include it as-is
+    if (path.extname(name)) {
+      candidates.add(name);
+    }
   } else {
     candidates.add(name);
   }
