@@ -78,8 +78,15 @@ function detectEnvironment(ctx) {
 }
 
 async function runFile(file, args, cwd = process.cwd()) {
+  // On Windows, .cmd/.bat files must be executed via cmd /c
+  let cmd = file;
+  let cmdArgs = args;
+  if (IS_WIN && /\.cmd|\.bat$/i.test(file)) {
+    cmd = "cmd";
+    cmdArgs = ["/c", file, ...args];
+  }
   try {
-    const { stdout, stderr } = await execFileAsync(file, args, {
+    const { stdout, stderr } = await execFileAsync(cmd, cmdArgs, {
       cwd,
       timeout: COMMAND_TIMEOUT_MS,
       maxBuffer: MAX_BUFFER,
