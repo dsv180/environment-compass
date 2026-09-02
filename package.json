@@ -1,0 +1,20 @@
+{
+  "name": "@letta-ai/environment-compass",
+  "version": "0.1.0",
+  "type": "module",
+  "keywords": [
+    "letta-package",
+    "letta-mod"
+  ],
+  "files": [
+    "README.md",
+    "MOD.md",
+    "mods"
+  ],
+  "letta": {
+    "manifestVersion": 1,
+    "mods": [
+      "mods/index.ts"
+    ]
+  }
+}
