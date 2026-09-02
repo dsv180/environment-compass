@@ -51,7 +51,7 @@ Status: clean
 
 ## Совместимость
 
-Desktop macOS, Desktop Windows, облачный режим.
+Desktop macOS (локальный и облачный), Desktop Windows (локальный backend).
 
 ## Лицензия
 
